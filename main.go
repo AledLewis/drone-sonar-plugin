@@ -78,6 +78,12 @@ func main() {
 			Value:  "false",
 			EnvVar: "PLUGIN_SHOWPROFILING",
 		},
+		cli.StringFlag{
+			Name: "extraParams",
+			Usage: "extra params not handled pass as java properties e.g. -Dsonar.java.source=1.8
+			Value: "",
+			EnvVar:"PLUGIN_EXTRAPARAMS"
+		},
 	}
 
 	app.Run(os.Args)
@@ -98,6 +104,7 @@ func run(c *cli.Context) {
 			Exclusions:    	c.String("exclusions"),
 			Level:    		c.String("level"),
 			showProfiling:  c.String("showProfiling"),
+			extraParams: c.String("extraParams"),
 		},
 	}
 
