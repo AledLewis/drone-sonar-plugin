@@ -20,6 +20,7 @@ type (
 		Exclusions  	string
 		Level 			string
 		showProfiling 	string
+		extraParams string
 	}
 	Plugin struct {
 		Config Config
@@ -41,6 +42,7 @@ func (p Plugin) Exec() error {
 		"-Dsonar.log.level=" + p.Config.Level,
 		"-Dsonar.showProfiling=" + p.Config.showProfiling,
 		"-Dsonar.scm.provider=git",
+		extraParams
 		
 	}
 	cmd := exec.Command("sonar-scanner", args...)
